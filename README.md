@@ -1,5 +1,2 @@
-Group: 
-  Orlean Rallos
-  Gregory Aguilar
-  Nathaniel Setiawan
-  Benson Kuang
+Group: Orlean Rallos, Gregory Aguilar, Nathaniel Setiawan, Benson Kuang
+
