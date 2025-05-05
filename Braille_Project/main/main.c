@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include "GPIOSetup.h"
+#include "driver/gpio.h"
 
 void app_main(void)
 {
@@ -8,16 +10,17 @@ void app_main(void)
 	int caseSelect = 0;
     while (true) {
 		
+		GPIOSetup();
 		caseSelect = 0;
-/*		if (button1 == HIGH) {
+		if (gpio_get_level(BUTTON1) == 1) {
 			caseSelect = 1;
 		}
-		else if (button 2 == HIGH) {
+		else if (gpio_get_level(BUTTON2)== 1) {
 			caseSelect = 2;
 		}
-		else if (button3 == HIGH) {
+		else if (gpio_get_level(BUTTON3) == 1) {
 			caseSelect = 3;
-		}	*/
+		}	
 		
 		switch(caseSelect) {
 			case 0: 
