@@ -7,8 +7,17 @@ void app_main(void)
 	// GPIOSetup();
 	int caseSelect = 0;
     while (true) {
+		
 		caseSelect = 0;
-		// if ()
+/*		if (button1 == HIGH) {
+			caseSelect = 1;
+		}
+		else if (button 2 == HIGH) {
+			caseSelect = 2;
+		}
+		else if (button3 == HIGH) {
+			caseSelect = 3;
+		}	*/
 		
 		switch(caseSelect) {
 			case 0: 
