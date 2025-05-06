@@ -23,7 +23,5 @@ void GPIOSetup(void) {
 	gpio_pulldown_dis(BUTTON2);
 	gpio_pulldown_dis(BUTTON3);
 	
-	gpio_sleep
-	
 	
 } // Full Setup TBD in here

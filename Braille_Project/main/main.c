@@ -10,7 +10,7 @@ void app_main(void)
 	int caseSelect = 0;
     while (true) {
 		
-		GPIOSetup();
+		void GPIOSetup();
 		caseSelect = 0;
 		if (gpio_get_level(BUTTON1) == 1) {
 			caseSelect = 1;
