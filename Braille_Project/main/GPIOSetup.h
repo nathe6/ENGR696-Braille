@@ -14,6 +14,8 @@
 #include "esp_log.h"
 #include "sdkconfig.h"
 
+#define I2SCLK GPIO_NUM_1
+#define I2SDATA GPIO_NUM_2
 #define BUTTON1 GPIO_NUM_4
 #define BUTTON2 GPIO_NUM_5
 #define BUTTON3 GPIO_NUM_6
