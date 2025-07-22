@@ -42,14 +42,15 @@ void app_main(void)
 			case 0:            // Do nothing
 				break;
 			case 1: // Next letter/number/word
-				// nextButton(mode);
-        break;
+					// nextButton(mode);
+        		break;
 			case 2: // Previous letter/number/word
-				// previousButton(mode);
-        break;
+					// previousButton(mode);
+        		break;
 			case 3: // Switches modes between letters/numbers/words
-				// switchMode(mode);
-        break;
+					// switchMode(mode) - just mode = mode + 1,
+					// if mode > 2, mode = 0;
+        		break;
 			default:
 				printf("Error: Unknown Input.");
 				break;
@@ -57,20 +58,23 @@ void app_main(void)
 
     /* Pull up braille cells based on the inputs (i.e. A = {1, 0, 0, 0, 0, 0})
      * Use a separate function w/ alphabet, number, and word tables
-     * switch (mode) {
-        case 0: 
-          // pull up letter (i.e. alphabetCall(letters));
-          break;
-        case 1:
-          // pull up number (i.e. numberCall(numbers));
-          break;
-        case 2:
-          // pull up word (i.e. wordCall(words));
-          break;
-        default:
-          printf("Error, unknown input.");
-          break;
-      }
+     *
+     if (caseSelect == 3) { 
+	     switch (mode) {
+	        case 0: 
+	          // pull up letter (i.e. alphabetCall(letters));
+	          break;
+	        case 1:
+	          // pull up number (i.e. numberCall(numbers));
+	          break;
+	        case 2:
+	          // pull up word (i.e. wordCall(words));
+	          break;
+	        default:
+	          printf("Error, unknown input.");
+	          break;
+	      }
+	 }
      */
 
     sleep(1);
