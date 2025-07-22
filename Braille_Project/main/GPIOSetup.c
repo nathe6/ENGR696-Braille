@@ -9,7 +9,7 @@
 #include "GPIOSetup.h"
 #include "hal/gpio_types.h"
 
-void GPIOSetup(void) {
+void GPIOSetup(void) { // GPIO Setup for the buttons; MCP has its own setup
 	
 	gpio_sleep_set_direction(BUTTON1, GPIO_MODE_INPUT);
 	gpio_sleep_set_direction(BUTTON2, GPIO_MODE_INPUT);

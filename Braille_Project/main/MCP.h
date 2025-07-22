@@ -8,7 +8,7 @@
 #ifndef MAIN_MCP_H_
 #define MAIN_MCP_H_
 
-#include <Arduino.h>
+#include "Arduino.h"
 #include <Wire.h>
 #include "Adafruit_MCP23X17.h"
 

@@ -7,6 +7,8 @@
 #include "GPIOSetup.h"
 #include "driver/gpio.h"
 #include "LEDs.h"
+#include "tables.h"
+#include "MCP.h"
 // #include "tables.h"
 
 void app_main(void)
@@ -20,6 +22,7 @@ void app_main(void)
 
   void GPIOSetup();
   void LEDSetup();
+  void setup();
 
   while (true) {
 		

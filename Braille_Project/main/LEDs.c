@@ -7,10 +7,10 @@
 
 #include "LEDs.h"
 
-void LEDSetup(void) {
+void LEDSetup(void) { // Setup LED on ESP32
 
   gpio_sleep_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
-  ESP_LOGI(TAG, "Configuring RGB LED at GPIO PIN...", LED_PIN);
+  ESP_LOGI(TAG, "Configuring RGB LED at GPIO PIN...", LED_PIN); 
 
   led_strip_config_t strip_config = {
     .strip_gpio_num = LED_PIN,
