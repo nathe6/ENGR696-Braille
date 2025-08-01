@@ -1,0 +1,32 @@
+@startuml braille
+
+class pin {
+    info : int [6]
+    asciiChar : string
+    void togglePin()
+    void asciiCharConvert()
+}
+
+class button {
+    debounce : float // Add a delay here
+    void next() 
+    void previous()
+    void mode()
+}
+
+class sd {
+    audioList : vector
+    void playAudio()
+}
+
+enum mode {
+    Letter
+    Number
+    Word
+} 
+
+button::next ---> pin::togglePin : calls, changes info & ascii val in pin
+button::previous ---> pin::togglePin : calls, changes info & ascii val in pin
+button::mode --> mode : has, mode() changes enum val
+
+@enduml
