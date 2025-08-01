@@ -1,12 +1,14 @@
 @startuml braille
 
 class board {
-    pins : int
+    cell : int
     buttons : int
 }
 
-button --|> board
-pin --|> board
+    cell --|> board::cell
+    cell : Pin (object)
+    button --|> board
+    pin --|> cell
 
 class pin {
     info : int [6]
@@ -29,7 +31,7 @@ class button {
 }
 
 class GPIOExtender {
-
+    
 }
 
 class sd {
@@ -38,12 +40,14 @@ class sd {
 
     sd <|-- audioList 
     audioList : string [] audioTrack
+    mode --> sd::playAudio : tells SD what audio to play
+    pin::togglePin --> sd::playAudio : pin toggles and tells sd what audio to play
 
 class led {
     void light()
 }
 
-    led::light --> mode : uses
+    led::light <-- mode : tells LED function what to light
 
 enum mode {
     Letter
