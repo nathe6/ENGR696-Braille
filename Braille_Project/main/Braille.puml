@@ -1,5 +1,13 @@
 @startuml braille
 
+class board {
+    pins : int
+    buttons : int
+}
+
+button --|> board
+pin --|> board
+
 class pin {
     info : int [6]
     asciiChar : string
@@ -7,16 +15,21 @@ class pin {
     void asciiCharConvert()
 }
 
-    pin::info <-- Tables : info goes to
-    Tables : char [][6] letterList
-    Tables : char [][6] numberList
-    Tables : string [] letterList
+    pin::info <-- BrailleTables : info goes to
+    BrailleTables : char [][6] letterList
+    BrailleTables : char [][6] numberList
+    BrailleTables : string [] wordList
+    pin::info --> pin::asciiChar : tells what char to be displayed
 
 class button {
     debounce : float 
     void next() 
     void previous()
     void mode()
+}
+
+class GPIOExtender {
+
 }
 
 class sd {
