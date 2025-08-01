@@ -7,17 +7,30 @@ class pin {
     void asciiCharConvert()
 }
 
+    pin::info <-- Tables : info goes to
+    Tables : char [][6] letterList
+    Tables : char [][6] numberList
+    Tables : string [] letterList
+
 class button {
-    debounce : float // Add a delay here
+    debounce : float 
     void next() 
     void previous()
     void mode()
 }
 
 class sd {
-    audioList : vector
     void playAudio()
 }
+
+    sd <|-- audioList 
+    audioList : string [] audioTrack
+
+class led {
+    void light()
+}
+
+    led::light --> mode : uses
 
 enum mode {
     Letter
@@ -25,8 +38,8 @@ enum mode {
     Word
 } 
 
-button::next ---> pin::togglePin : calls, changes info & ascii val in pin
-button::previous ---> pin::togglePin : calls, changes info & ascii val in pin
-button::mode --> mode : has, mode() changes enum val
+    button::next ---> pin::togglePin : calls, changes info & ascii val in pin
+    button::previous ---> pin::togglePin : calls, changes info & ascii val in pin
+    button::mode --> mode : has, mode() changes enum val
 
 @enduml

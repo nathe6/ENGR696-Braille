@@ -2,7 +2,7 @@
  * MCP.c
  *
  *  Created on: Jul 8, 2025
- *      Author: Nathaniel
+ *      Author: Nathaniel Setiawan
  */
  
 #include "MCP.h"
