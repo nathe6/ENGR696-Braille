@@ -1,54 +1,77 @@
 @startuml braille
-skinparam linetype polyline
+' skinparam linetype polyline
 
-class board {
-    cell : int
-    buttons : int
+together {
+    class board {
+        cell : int
+        buttons : int
+    }
+
+        cell --|> board
+        cell : pin (object)
+        button --|> board
+        pin --|> cell
+
+    class pin {
+        info : int
+        asciiChar : string
+        void togglePin()
+        void asciiCharConvert()
+    }
+
+        pin <|-- BrailleTables : info from
+        BrailleTables : char [][6] letterList
+        BrailleTables : char [][6] numberList
+        BrailleTables : string [] wordList
+
+    class button {
+        debounce : float 
+        void next() 
+        void previous()
+        void mode()
+    }
+
+        button --> pin : passes info
+        button --> mode : changes val
+
 }
 
-    cell --|> board
-    cell : Pin (object)
-    button --|> board
-    pin --|> cell
+together {
 
-class pin {
-    info : int
-    asciiChar : string
-    void togglePin()
-    void asciiCharConvert()
+    class GPIOExtender {
+        
+    }
+
+        GPIOExtender <-- pin
+
+    class ESP32 {
+
+    } 
+
+        ESP32 <|-- GPIOExtender
+
+    class I2C {
+
+    }
+
+        ESP32 <|-- I2C
+
+    class RS485 {
+
+    }
+
+        I2C <|-- RS485 
+
 }
 
-    pin <|-- BrailleTables : info from
-    BrailleTables : char [][6] letterList
-    BrailleTables : char [][6] numberList
-    BrailleTables : string [] wordList
-
-class button {
-    debounce : float 
-    void next() 
-    void previous()
-    void mode()
-}
-
-    button --> pin : passes info
-    button::mode --> mode : changes val
-
-class GPIOExtender {
-    
-}
-
-    GPIOExtender <-- pin : connected to
-
-class 
-
-class sd {
+class SD {
     void playAudio()
 }
 
-    sd <|-- audioList 
+    SD <|-- audioList 
     audioList : string [] audioTrack
-    mode --> sd : tells sd to play
-    pin::togglePin ---> sd : tells sd to play after toggle
+    mode --> SD : tells SD to play
+    GPIOExtender --> SD : tells SD to play
 
 class led {
     void light()
