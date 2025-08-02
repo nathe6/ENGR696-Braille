@@ -1,11 +1,12 @@
 @startuml braille
+skinparam linetype polyline
 
 class board {
     cell : int
     buttons : int
 }
 
-    cell --|> board::cell
+    cell --|> board
     cell : Pin (object)
     button --|> board
     pin --|> cell
@@ -17,11 +18,11 @@ class pin {
     void asciiCharConvert()
 }
 
-    pin::info <-- BrailleTables : info goes to
+    pin <-- BrailleTables : info goes to
     BrailleTables : char [][6] letterList
     BrailleTables : char [][6] numberList
     BrailleTables : string [] wordList
-    pin::info --> pin::asciiChar : tells what char to be displayed
+    pin --> pin::asciiChar : tells what char to be displayed
 
 class button {
     debounce : float 
@@ -29,6 +30,10 @@ class button {
     void previous()
     void mode()
 }
+
+    button::next ---> pin : calls, changes info & ascii val in pin
+    button::previous ---> pin : calls, changes info & ascii val in pin
+    button::mode --> mode : has, mode() changes enum val
 
 class GPIOExtender {
     
@@ -41,7 +46,7 @@ class sd {
     sd <|-- audioList 
     audioList : string [] audioTrack
     mode --> sd::playAudio : tells SD what audio to play
-    pin::togglePin --> sd::playAudio : pin toggles and tells sd what audio to play
+    pin --> sd::playAudio : pin toggles and tells sd what audio to play
 
 class led {
     void light()
@@ -54,9 +59,5 @@ enum mode {
     Number
     Word
 } 
-
-    button::next ---> pin::togglePin : calls, changes info & ascii val in pin
-    button::previous ---> pin::togglePin : calls, changes info & ascii val in pin
-    button::mode --> mode : has, mode() changes enum val
 
 @enduml
