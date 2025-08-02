@@ -36,33 +36,12 @@ together {
 
 }
 
-together {
-
-    class GPIOExtender {
-        
-    }
-
-        GPIOExtender <-- pin
-
-    class ESP32 {
-
-    } 
-
-        ESP32 <|-- GPIOExtender
-
-    class I2C {
-
-    }
-
-        ESP32 <|-- I2C
-
-    class RS485 {
-
-    }
-
-        I2C <|-- RS485 
-
+class ESP32 {
+    GPIOExtender
+    I2C
 }
+
+    board --|> ESP32
 
 class SD {
     void playAudio()
@@ -70,8 +49,8 @@ class SD {
 
     SD <|-- audioList 
     audioList : string [] audioTrack
-    mode --> SD : tells SD to play
-    GPIOExtender --> SD : tells SD to play
+    mode -> SD : tells SD to play
+    ESP32 --> SD : tells SD to play
 
 class led {
     void light()

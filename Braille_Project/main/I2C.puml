@@ -1,0 +1,27 @@
+@startuml ESP32
+
+together {
+
+    class ESP32 {
+
+    }
+
+    class I2CController {
+
+    }
+
+    class RS485 {
+
+    }
+
+    class GPIOExtender {
+
+    }
+
+    GPIOExtender --|> ESP32
+    I2CController --> ESP32 : connected 
+    RS485 --|> I2CController
+
+}
+
+@enduml
