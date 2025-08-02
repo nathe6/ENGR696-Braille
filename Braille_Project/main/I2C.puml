@@ -3,19 +3,20 @@
 together {
 
     class ESP32 {
-
+        void setup()
     }
 
     class I2CController {
-
+        Don't change the clock speed!
+        void setup()
     }
 
     class RS485 {
-
+        void setup()
     }
 
     class GPIOExtender {
-
+        void setup()
     }
 
     GPIOExtender --|> ESP32
