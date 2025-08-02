@@ -30,15 +30,13 @@ class button {
     void mode()
 }
 
-    button::next ---> pin : calls togglePin(), changes info & ascii val
-    button::previous ---> pin : calls togglePin(), changes info & ascii val in pin
-    button::mode --> mode : has, mode() changes enum val
+    button --> pin : passes info
 
 class GPIOExtender {
     
 }
 
-    GPIOExtender <-- pin : pins connect to GPIO pins on ESP/MCP
+    GPIOExtender <-- pin : connects pins
 
 class sd {
     void playAudio()
@@ -46,14 +44,14 @@ class sd {
 
     sd <|-- audioList 
     audioList : string [] audioTrack
-    mode --> sd::playAudio : tells sd what audio to play
-    pin --> sd::playAudio : pin toggles and tells sd what audio to play
+    mode --> sd::playAudio : tells sd which audio to play
+    pin --> sd::playAudio : tells sd which audio to play after toggle
 
 class led {
     void light()
 }
 
-    led <-- mode : tells LED function what to light
+    led <-- mode : lights color based on mode
 
 enum mode {
     Letter
