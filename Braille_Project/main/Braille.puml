@@ -12,13 +12,13 @@ class board {
     pin --|> cell
 
 class pin {
-    info : int [6]
+    info : int
     asciiChar : string
     void togglePin()
     void asciiCharConvert()
 }
 
-    pin <-- BrailleTables : info goes to
+    pin <|-- BrailleTables : info from
     BrailleTables : char [][6] letterList
     BrailleTables : char [][6] numberList
     BrailleTables : string [] wordList
@@ -31,12 +31,15 @@ class button {
 }
 
     button --> pin : passes info
+    button::mode --> mode : changes val
 
 class GPIOExtender {
     
 }
 
-    GPIOExtender <-- pin : connects pins
+    GPIOExtender <-- pin : connected to
+
+class 
 
 class sd {
     void playAudio()
@@ -44,14 +47,14 @@ class sd {
 
     sd <|-- audioList 
     audioList : string [] audioTrack
-    mode --> sd::playAudio : tells sd which audio to play
-    pin --> sd::playAudio : tells sd which audio to play after toggle
+    mode --> sd : tells sd to play
+    pin::togglePin ---> sd : tells sd to play after toggle
 
 class led {
     void light()
 }
 
-    led <-- mode : lights color based on mode
+    led <-- mode : mode lights color
 
 enum mode {
     Letter
