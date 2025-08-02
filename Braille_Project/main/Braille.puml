@@ -22,7 +22,6 @@ class pin {
     BrailleTables : char [][6] letterList
     BrailleTables : char [][6] numberList
     BrailleTables : string [] wordList
-    pin --> pin::asciiChar : tells what char to be displayed
 
 class button {
     debounce : float 
@@ -31,13 +30,15 @@ class button {
     void mode()
 }
 
-    button::next ---> pin : calls, changes info & ascii val in pin
-    button::previous ---> pin : calls, changes info & ascii val in pin
+    button::next ---> pin : calls togglePin(), changes info & ascii val
+    button::previous ---> pin : calls togglePin(), changes info & ascii val in pin
     button::mode --> mode : has, mode() changes enum val
 
 class GPIOExtender {
     
 }
+
+    GPIOExtender <-- pin : pins connect to GPIO pins on ESP/MCP
 
 class sd {
     void playAudio()
@@ -45,14 +46,14 @@ class sd {
 
     sd <|-- audioList 
     audioList : string [] audioTrack
-    mode --> sd::playAudio : tells SD what audio to play
+    mode --> sd::playAudio : tells sd what audio to play
     pin --> sd::playAudio : pin toggles and tells sd what audio to play
 
 class led {
     void light()
 }
 
-    led::light <-- mode : tells LED function what to light
+    led <-- mode : tells LED function what to light
 
 enum mode {
     Letter
