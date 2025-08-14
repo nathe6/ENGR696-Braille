@@ -3,12 +3,15 @@
 
 together {
     class board {
-        cell : int
-        buttons : int
+        - cell : cell obj
+        - buttons : button obj
     }
 
+    class cell {
+        - pin : pin obj
+    }
+    
         cell --|> board
-        cell : pin (object)
         button --|> board
         pin --|> cell
 
@@ -38,8 +41,9 @@ together {
 }
 
 class ESP32 {
-    #MCP23017
-    #I2C
+    - MCP23017
+    - I2C
+    - board : board obj
     void init()
 }
 
