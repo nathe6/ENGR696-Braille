@@ -3,35 +3,52 @@
 together {
 
     class ESP32 {
-        void setup()
+        - I2C I2CInterface
+        - I2S I2SInterface
+        void init()
+    }
+
+    class I2CInterface {
+        - GPIOExpander MCP23017
+        void init()
+    }
+
+    class I2SInterface {
+        void init()
     }
 
     class ATTINY {
+        - RS485 RS485
+        - MAX98357A/DAC MAX98357A
         #Don't change the clock speed!
-        void setup()
+        void init()
         
     }
 
     class RS485 {
         #Define receiver/driver pin
-        void setup()
+        void init()
     }
 
     class MCP23017 {
         #define GPIO inputs
         #define GPIO outputs
-        void setup()
+        #setup busses
+        void init()
     }
 
     class MAX98357A {
+        - Wave
         #Set CMRI address(?)
-        void setup()
+        void init()
     }
 
-    MCP23017 --|> ESP32
+    ESP32 --|> I2CInterface
+    ESP32 --|> I2SInterface
+    MCP23017 --> I2CInterface
     ATTINY --> MCP23017 : connected 
-    RS485 --|> ATTINY
-    MAX98357A --|> ATTINY
+    RS485 <|-- ATTINY
+    MAX98357A <|-- ATTINY
 
 }
 

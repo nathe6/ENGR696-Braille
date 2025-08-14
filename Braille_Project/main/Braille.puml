@@ -10,7 +10,7 @@ together {
     class cell {
         - pin : pin obj
     }
-    
+
         cell --|> board
         button --|> board
         pin --|> cell
@@ -29,13 +29,14 @@ together {
 
     class button {
         #Define button inputs, set push/pull
-        void debounce() 
-        void next() 
-        void previous()
-        void mode()
+        #includes braille tables
+        void debounce(float sec) 
+        void next(List *usedList) 
+        void previous(List *usedList)
+        void mode(List *usedList)
     }
 
-        button --> pin : passes info
+        button <--> pin : passes info 
         button --> mode : changes val
 
 }
@@ -50,14 +51,16 @@ class ESP32 {
     board --|> ESP32
 
 class SD {
-    void setup()
+    void init()
     void playAudio(string audioID)
+    void readFile(string *path)
+    void writeFile(string *path,string *data)
 }
 
     SD <|-- audioList 
     audioList : string [] audioTrack
     mode -> SD : tells SD to play
-    ESP32 --> SD : tells SD to play
+    ESP32 <--> SD 
 
 class led {
     #define color values
