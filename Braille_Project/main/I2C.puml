@@ -6,22 +6,32 @@ together {
         void setup()
     }
 
-    class I2CController {
-        Don't change the clock speed!
+    class ATTINY {
+        #Don't change the clock speed!
         void setup()
+        
     }
 
     class RS485 {
+        #Define receiver/driver pin
         void setup()
     }
 
-    class GPIOExtender {
+    class MCP23017 {
+        #define GPIO inputs
+        #define GPIO outputs
         void setup()
     }
 
-    GPIOExtender --|> ESP32
-    I2CController --> ESP32 : connected 
-    RS485 --|> I2CController
+    class MAX98357A {
+        #Set CMRI address(?)
+        void setup()
+    }
+
+    MCP23017 --|> ESP32
+    ATTINY --> MCP23017 : connected 
+    RS485 --|> ATTINY
+    MAX98357A --|> ATTINY
 
 }
 

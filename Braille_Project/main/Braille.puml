@@ -15,8 +15,8 @@ together {
     class pin {
         info : int
         asciiChar : string
-        void togglePin()
-        void asciiCharConvert()
+        void togglePin(char letter)
+        void asciiCharConvert(char letter)
     }
 
         pin <|-- BrailleTables : info from
@@ -25,7 +25,8 @@ together {
         BrailleTables : string [] wordList
 
     class button {
-        debounce : float 
+        #Define button inputs, set push/pull
+        void debounce() 
         void next() 
         void previous()
         void mode()
@@ -37,14 +38,16 @@ together {
 }
 
 class ESP32 {
-    GPIOExtender
-    I2C
+    #MCP23017
+    #I2C
+    void init()
 }
 
     board --|> ESP32
 
 class SD {
-    void playAudio()
+    void setup()
+    void playAudio(string audioID)
 }
 
     SD <|-- audioList 
@@ -53,7 +56,8 @@ class SD {
     ESP32 --> SD : tells SD to play
 
 class led {
-    void light()
+    #define color values
+    void light(color val)
 }
 
     led <-- mode : mode lights color

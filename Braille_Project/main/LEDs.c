@@ -29,7 +29,7 @@ void LEDSetup(void) { // Setup LED on ESP32
   led_strip_refresh (led_strip);
 
 }
-
+/*
 void LEDSet (int choice) {
 
   switch (choice) {
@@ -48,3 +48,4 @@ void LEDSet (int choice) {
   }
 
 }
+*/
