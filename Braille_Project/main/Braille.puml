@@ -3,11 +3,13 @@
 
 together {
     class board {
+        # physical component
         - cell : cell obj
         - buttons : button obj
     }
 
     class cell {
+        # phyiscal component
         - pin : pin obj
     }
 
@@ -16,6 +18,8 @@ together {
         pin --|> cell
 
     class pin {
+        #physical component
+        #CPP obj
         info : int
         asciiChar : string
         void togglePin(char letter)
@@ -28,8 +32,10 @@ together {
         BrailleTables : string [] wordList
 
     class button {
-        #Define button inputs, set push/pull
-        #includes braille tables
+        # physical component
+        # CPP object
+        - Define button inputs, set push/pull
+        - includes braille tables
         void debounce(float sec) 
         void next(List *usedList) 
         void previous(List *usedList)
@@ -42,15 +48,24 @@ together {
 }
 
 class ESP32 {
+    # physical component
     - MCP23017
     - I2C
     - board : board obj
+    - ATTINY Interface
     void init()
 }
 
+class ATTINY16x4 {
+    # physical component
+    void init()
+}
+
+    ATTINY16x4 --|> ESP32
     board --|> ESP32
 
 class SD {
+    # physical component
     void init()
     void playAudio(string audioID)
     void readFile(string *path)
@@ -63,7 +78,9 @@ class SD {
     ESP32 <--> SD 
 
 class led {
-    #define color values
+    # physical component
+    # CPP object
+    - define color values
     void light(color val)
 }
 
