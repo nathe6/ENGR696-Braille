@@ -19,7 +19,6 @@ together {
 
     class ATTINY {
         - RS485 RS485
-        - MAX98357A/DAC MAX98357A
         #Don't change the clock speed!
         void init()
         
@@ -37,18 +36,11 @@ together {
         void init()
     }
 
-    class MAX98357A {
-        - Wave
-        #Set CMRI address(?)
-        void init()
-    }
-
     ESP32 --|> I2CInterface
     ESP32 --|> I2SInterface
     MCP23017 --> I2CInterface
     ATTINY --> MCP23017 : connected 
     RS485 <|-- ATTINY
-    MAX98357A <|-- ATTINY
 
 }
 
