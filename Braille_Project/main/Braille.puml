@@ -4,6 +4,7 @@
 together {
     class board {
         # physical component
+        + void init()
         + cell : cell obj
         + buttons : button obj
     }
@@ -51,9 +52,10 @@ class ESP32 {
     # physical component
     - MCP23017
     - I2C
-    - board : board obj
     - ATTINY Interface
+    + board : board obj
     + void init()
+    + void sleep()
 }
 
 class ATTINY16x4 {
@@ -83,6 +85,7 @@ class led {
     # physical component
     # CPP object
     - define color values
+    + void init()
     + void light(color val)
 }
 
