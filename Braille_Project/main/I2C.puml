@@ -3,6 +3,7 @@
 together {
 
     class ESP32 {
+        # physical component
         - I2C I2CInterface
         - I2S I2SInterface
         void init()
@@ -18,29 +19,46 @@ together {
     }
 
     class ATTINY {
+        # physical component
         - RS485 RS485
-        #Don't change the clock speed!
+        - Don't change the clock speed!
         void init()
         
     }
 
     class RS485 {
-        #Define receiver/driver pin
+        # physical component
+        - Define receiver/driver pin
         void init()
     }
 
     class MCP23017 {
-        #define GPIO inputs
-        #define GPIO outputs
-        #setup busses
+        # physical component
+        - define GPIO inputs
+        - define GPIO outputs
+        - setup busses, prevent floating address pins
         void init()
+    }
+
+    class MAX98357A {
+        # physical component
+        - Wave
+        - Set CMRI address (?)
+        void init()
+    }
+
+    class MUX {
+        # physical component
+        - For LEDs
     }
 
     ESP32 --|> I2CInterface
     ESP32 --|> I2SInterface
-    MCP23017 --> I2CInterface
+    MCP23017 <|-- I2CInterface
     ATTINY --> MCP23017 : connected 
     RS485 <|-- ATTINY
+    MAX98357A --> I2SInterface
+    MUX --> ESP32
 
 }
 

@@ -4,13 +4,13 @@
 together {
     class board {
         # physical component
-        - cell : cell obj
-        - buttons : button obj
+        + cell : cell obj
+        + buttons : button obj
     }
 
     class cell {
         # phyiscal component
-        - pin : pin obj
+        + pin : pin obj
     }
 
         cell --|> board
@@ -18,12 +18,12 @@ together {
         pin --|> cell
 
     class pin {
-        #physical component
-        #CPP obj
-        info : int
-        asciiChar : string
-        void togglePin(char letter)
-        void asciiCharConvert(char letter)
+        # physical component
+        # CPP obj
+        + info : int
+        + asciiChar : string
+        + void togglePin(char letter)
+        + void asciiCharConvert(char letter)
     }
 
         pin <|-- BrailleTables : info from
@@ -36,10 +36,10 @@ together {
         # CPP object
         - Define button inputs, set push/pull
         - includes braille tables
-        void debounce(float sec) 
-        void next(List *usedList) 
-        void previous(List *usedList)
-        void mode(List *usedList)
+        + void debounce(float sec) 
+        + void next(List *usedList) 
+        + void previous(List *usedList)
+        + void mode(List *usedList)
     }
 
         button <--> pin : passes info 
@@ -53,12 +53,13 @@ class ESP32 {
     - I2C
     - board : board obj
     - ATTINY Interface
-    void init()
+    + void init()
 }
 
 class ATTINY16x4 {
     # physical component
-    void init()
+    + void init()
+    + interruptHandler()
 }
 
     ATTINY16x4 --|> ESP32
@@ -66,10 +67,11 @@ class ATTINY16x4 {
 
 class SD {
     # physical component
-    void init()
-    void playAudio(string audioID)
-    void readFile(string *path)
-    void writeFile(string *path,string *data)
+    + data : char
+    + void init()
+    + void playAudio(string audioID)
+    + void readFile(string *path)
+    + void writeFile(string *path,string *data)
 }
 
     SD <|-- audioList 
@@ -81,15 +83,15 @@ class led {
     # physical component
     # CPP object
     - define color values
-    void light(color val)
+    + void light(color val)
 }
 
     led <-- mode : mode lights color
 
 enum mode {
-    Letter
-    Number
-    Word
+    + Letter
+    + Number
+    + Word
 } 
 
 @enduml
