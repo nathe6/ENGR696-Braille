@@ -56,6 +56,7 @@ class ESP32 {
     + board : board obj
     + void init()
     + void sleep()
+    + void loop()
 }
 
 class ATTINY16x4 {
