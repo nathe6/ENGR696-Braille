@@ -19,6 +19,7 @@ together {
 
     class I2SInterface {
         - Speaker MAX98357A
+        - SD Card
         + void init()
         + void sendData(char* data)
     }
@@ -58,6 +59,15 @@ together {
         + void init()
     }
 
+    class SD {
+        # physical component
+        + data : char
+        + void init()
+        + void playAudio(string audioID)
+        + void readFile(string *path)
+        + void writeFile(string *path,string *data)
+    }
+
     class MUX {
         # physical component
         - For LEDs
@@ -70,6 +80,7 @@ together {
     ATTINY --> MCP23017 : connected 
     RS485 <|-- ATTINY
     MAX98357A <-- I2SInterface
+    SD <-- I2SInterface
     MUX --> ESP32
 
 }

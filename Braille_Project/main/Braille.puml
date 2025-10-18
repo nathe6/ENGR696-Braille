@@ -51,7 +51,7 @@ together {
 class ESP32 {
     # physical component
     - MCP23017
-    - I2C
+    - I2C, I2S
     - ATTINY Interface
     + board : board obj
     + void init()
