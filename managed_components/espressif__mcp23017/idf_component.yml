@@ -1,0 +1,14 @@
+dependencies:
+  cmake_utilities: 0.*
+  i2c_bus:
+    public: true
+  idf: '>=4.0'
+description: MCP23017 I/O Expander Driver
+documentation: https://docs.espressif.com/projects/esp-iot-solution/en/latest/others/io_expander.html
+issues: https://github.com/espressif/esp-iot-solution/issues
+repository: git://github.com/espressif/esp-iot-solution.git
+repository_info:
+  commit_sha: fc9a1cac12cac68ba4772e88af165de6465f8cf7
+  path: components/expander/io_expander/mcp23017
+url: https://github.com/espressif/esp-iot-solution/tree/master/components/expander/io_expander/mcp23017
+version: 0.1.1

@@ -7,7 +7,6 @@
 
 #ifndef MAIN_TABLES_H_
 #define MAIN_TABLES_H_
-#include <string>
 #include <string.h>
 #include <stdio.h>
 
