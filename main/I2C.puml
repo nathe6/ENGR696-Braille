@@ -1,0 +1,88 @@
+@startuml ESP32
+
+together {
+
+    class ESP32 {
+        # physical component
+        - I2C I2CInterface
+        - I2S I2SInterface
+        + void init()
+        + void sleep()
+        + void loop()
+    }
+
+    class I2CInterface {
+        - GPIOExpander MCP23017
+        + void init()
+        + void sendData(char* data)
+    }
+
+    class I2SInterface {
+        - Speaker MAX98357A
+        - SD Card
+        + void init()
+        + void sendData(char* data)
+    }
+
+    class ATTINY {
+        # physical component
+        - RS485 RS485
+        - Don't change the clock speed!
+        + void init()
+        + void interruptHandler()
+        
+    }
+
+    class RS485 {
+        # physical component
+        - Define receiver/driver pin
+        + pinNumber : int
+        + void init()
+    }
+
+    class MCP23017 {
+        # physical component
+        + bus : char
+        + pinNumber : ints
+        - define GPIO inputs
+        - define GPIO outputs
+        - setup busses, prevent floating address pins
+        + void init()
+        + void portSelect()
+        + [void sendData(?)?]
+
+    }
+
+    class MAX98357A {
+        # physical component
+        - Wave [function?]
+        + void init()
+    }
+
+    class SD {
+        # physical component
+        + data : char
+        + void init()
+        + void playAudio(string audioID)
+        + void readFile(string *path)
+        + void writeFile(string *path,string *data)
+    }
+
+    class MUX {
+        # physical component
+        - For LEDs
+        + void init()?
+    }
+
+    ESP32 --|> I2CInterface
+    ESP32 --|> I2SInterface
+    MCP23017 <--> I2CInterface
+    ATTINY --> MCP23017 : connected 
+    RS485 <|-- ATTINY
+    MAX98357A <-- I2SInterface
+    SD <-- I2SInterface
+    MUX --> ESP32
+
+}
+
+@enduml
